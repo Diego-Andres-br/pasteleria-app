@@ -161,6 +161,42 @@ export default function Tienda() {
         </div>
       </div>
 
+      {/* Galería */}
+<div style={{ backgroundColor: "white", padding: "70px 24px", textAlign: "center" }}>
+  <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+    <p style={{ color: C.marronClaro, fontSize: 12, letterSpacing: 4, textTransform: "uppercase", marginBottom: 12 }}>Nuestros trabajos</p>
+    <h3 className="hero-text" style={{ color: C.marron, fontSize: 40, fontWeight: 900, marginBottom: 12 }}>Galería de creaciones</h3>
+    <p style={{ color: "#9ca3af", fontSize: 16, marginBottom: 48, fontFamily: "Lato, sans-serif" }}>Cada torta es una obra de arte hecha con amor</p>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: 16 }}>
+      {[
+        { emoji: "🎂", label: "Torta de bodas", desc: "Elegancia y amor" },
+        { emoji: "🧁", label: "Cupcakes florales", desc: "Para ocasiones especiales" },
+        { emoji: "🍰", label: "Torta de cumpleaños", desc: "Personalizada con tu tema" },
+        { emoji: "🎀", label: "Baby shower", desc: "Dulce bienvenida" },
+        { emoji: "👑", label: "Quinceañera", desc: "El día más especial" },
+        { emoji: "💝", label: "Aniversario", desc: "Celebra el amor" },
+      ].map((item, i) => (
+        <div key={i} className="producto-card"
+          style={{ borderRadius: 20, overflow: "hidden", border: `1px solid ${C.cremaOscura}`, cursor: "pointer" }}>
+          <div style={{ height: 200, background: `linear-gradient(135deg, #fdf0e8, ${C.cremaOscura})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 80 }}>
+            {item.emoji}
+          </div>
+          <div style={{ padding: "16px 20px", backgroundColor: "white", textAlign: "left" }}>
+            <p style={{ color: C.marron, fontSize: 15, fontWeight: 700, marginBottom: 4 }}>{item.label}</p>
+            <p style={{ color: "#9ca3af", fontSize: 13, fontFamily: "Lato, sans-serif" }}>{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p style={{ marginTop: 32, color: C.texto, fontSize: 15, fontFamily: "Lato, sans-serif" }}>
+      ¿Quieres algo personalizado?{" "}
+      <a href="https://wa.me/573045732744" target="_blank" style={{ color: C.marron, fontWeight: 700 }}>
+        Escríbenos por WhatsApp
+      </a>
+    </p>
+  </div>
+</div>
+
       {/* Productos */}
       <div id="productos" style={{ maxWidth: 1200, margin: "0 auto", padding: "50px 24px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
@@ -307,7 +343,7 @@ export default function Tienda() {
   <p style={{ marginTop: 32, fontSize: 12, color: C.cremaOscura, opacity: 0.6 }}>© 2026 Repostería Claudia Patricia · Todos los derechos reservados</p>
   
   {/* Botón escondido admin */}
-<a href="/admin/login" onClick={(e) => { e.preventDefault(); window.location.href = window.location.origin + "admin/inventario" }}    style={{ display: "inline-block", marginTop: 24, color: "transparent", fontSize: 10, cursor: "default", userSelect: "none", opacity: 0.15 }}
+<a href="/admin/login" onClick={(e) => { e.preventDefault(); window.location.href = window.location.origin + "/admin/login" }} style={{ display: "inline-block", marginTop: 24, color: "transparent", fontSize: 10, cursor: "default", userSelect: "none", opacity: 0.15 }}
     onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
     onMouseLeave={e => (e.currentTarget.style.opacity = "0.15")}>
     ⚙️ Admin
