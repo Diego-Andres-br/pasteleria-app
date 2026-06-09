@@ -117,7 +117,11 @@ export default function Tienda() {
       <header style={{ backgroundColor: C.marron, position: "sticky", top: 0, zIndex: 40, boxShadow: "0 2px 20px rgba(0,0,0,0.3)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <h1 className="hero-text" style={{ color: "#fef3c7", fontSize: 22, fontWeight: 900, letterSpacing: 1 }}>🎂 Repostería Claudia Patricia</h1>
+            <h1 className="hero-text" 
+  style={{ color: "#fef3c7", fontSize: 22, fontWeight: 900, letterSpacing: 1, cursor: "default" }}
+  onDoubleClick={() => window.location.href = "/admin/login"}>
+  🎂 Repostería Claudia Patricia
+</h1>
             <p style={{ color: "#fcd34d", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>Hecho con amor · Cartagena</p>
           </div>
           <button className="carrito-btn" onClick={() => setCarritoOpen(true)}
@@ -218,6 +222,78 @@ export default function Tienda() {
   <FaWhatsapp />
 </a>
 
+{/* Sobre nosotros */}
+<div style={{ background: `linear-gradient(135deg, #fdf0e8, ${C.cremaOscura})`, padding: "80px 24px", textAlign: "center" }}>
+  <div style={{ maxWidth: 800, margin: "0 auto" }}>
+    <p style={{ color: C.marronClaro, fontSize: 12, letterSpacing: 4, textTransform: "uppercase", marginBottom: 12 }}>Nuestra historia</p>
+    <h3 className="hero-text" style={{ color: C.marron, fontSize: 40, fontWeight: 900, marginBottom: 24, lineHeight: 1.2 }}>
+      Hechos con amor desde Cartagena
+    </h3>
+    <p style={{ color: C.texto, fontSize: 17, lineHeight: 1.9, marginBottom: 20, fontFamily: "Lato, sans-serif", fontWeight: 300 }}>
+      Somos <strong>Repostería Claudia Patricia</strong>, una pastelería artesanal nacida en el corazón de Cartagena. 
+      Cada torta, cada cupcake y cada detalle dulce que preparamos lleva ingredientes de calidad y el cariño 
+      de quien sabe que un buen postre puede hacer un momento inolvidable.
+    </p>
+    <p style={{ color: C.texto, fontSize: 17, lineHeight: 1.9, marginBottom: 40, fontFamily: "Lato, sans-serif", fontWeight: 300 }}>
+      Trabajamos con pedidos personalizados para que tu celebración sea exactamente como la soñaste. 
+      🎂 Bodas, quinceañeros, cumpleaños, baby showers — estamos aquí para endulzar tu vida.
+    </p>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 24, maxWidth: 700, margin: "0 auto" }}>
+      {[
+        { emoji: "🎂", label: "Tortas personalizadas" },
+        { emoji: "🧁", label: "Cupcakes artesanales" },
+        { emoji: "🍰", label: "Postres especiales" },
+        { emoji: "💝", label: "Hechos con amor" },
+      ].map(item => (
+        <div key={item.label} style={{ backgroundColor: "white", borderRadius: 20, padding: "24px 16px", boxShadow: "0 4px 16px rgba(0,0,0,0.06)", border: `1px solid ${C.cremaOscura}` }}>
+          <p style={{ fontSize: 40, marginBottom: 10 }}>{item.emoji}</p>
+          <p style={{ color: C.marron, fontSize: 14, fontWeight: 700, fontFamily: "Lato, sans-serif" }}>{item.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+{/* Testimonios */}
+<div style={{ backgroundColor: "white", padding: "80px 24px", textAlign: "center" }}>
+  <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+    <p style={{ color: C.marronClaro, fontSize: 12, letterSpacing: 4, textTransform: "uppercase", marginBottom: 12 }}>Lo que dicen nuestros clientes</p>
+    <h3 className="hero-text" style={{ color: C.marron, fontSize: 40, fontWeight: 900, marginBottom: 48 }}>
+      Reseñas y testimonios 💬
+    </h3>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
+      {[
+        { nombre: "María Fernanda", ciudad: "Cartagena", texto: "¡La torta de mi boda fue absolutamente perfecta! Claudia Patricia superó todas mis expectativas. El sabor, la decoración, todo impecable. 100% recomendada.", estrellas: 5 },
+        { nombre: "Carlos Andrés", ciudad: "Barranquilla", texto: "Pedí los cupcakes para el cumpleaños de mi hija y quedaron hermosos. Los niños los amaron y los adultos también. Definitivamente volveré a pedir.", estrellas: 5 },
+        { nombre: "Valentina Gómez", ciudad: "Cartagena", texto: "Atención personalizada y productos de primera calidad. La torta de quinceaños de mi sobrina quedó exactamente como la queríamos. ¡Gracias!", estrellas: 5 },
+        { nombre: "Andrés Felipe", ciudad: "Bogotá", texto: "Encargué una torta especial para aniversario y llegó a tiempo, perfectamente decorada. El sabor es increíble, nunca había probado algo tan delicioso.", estrellas: 5 },
+        { nombre: "Laura Paola", ciudad: "Cartagena", texto: "Los mejores postres de Cartagena sin duda. Claudia Patricia tiene un talento único y lo pone en cada detalle. Mi familia queda encantada siempre.", estrellas: 5 },
+        { nombre: "Roberto Silva", ciudad: "Sincelejo", texto: "Pedí una torta de baby shower y fue el centro de atención de la fiesta. Todos preguntaban dónde la habían hecho. Excelente trabajo.", estrellas: 5 },
+      ].map((t, i) => (
+        <div key={i} style={{ backgroundColor: C.crema, borderRadius: 20, padding: 28, textAlign: "left", border: `1px solid ${C.cremaOscura}`, transition: "transform 0.3s, box-shadow 0.3s" }}
+          onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 32px rgba(124,63,47,0.12)" }}
+          onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none" }}>
+          <div style={{ display: "flex", gap: 4, marginBottom: 14 }}>
+            {Array.from({ length: t.estrellas }).map((_, j) => (
+              <span key={j} style={{ color: "#f59e0b", fontSize: 18 }}>★</span>
+            ))}
+          </div>
+          <p style={{ color: C.texto, fontSize: 14, lineHeight: 1.8, marginBottom: 16, fontFamily: "Lato, sans-serif", fontStyle: "italic" }}>&#34;{t.texto}&#34;</p>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ width: 42, height: 42, borderRadius: "50%", backgroundColor: C.marron, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: 18, fontWeight: 700 }}>
+              {t.nombre[0]}
+            </div>
+            <div>
+              <p style={{ color: C.marron, fontSize: 14, fontWeight: 700, margin: 0 }}>{t.nombre}</p>
+              <p style={{ color: C.marronClaro, fontSize: 12, margin: 0 }}>{t.ciudad}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 {/* footer */}
 <footer style={{ backgroundColor: C.marron, textAlign: "center", padding: "50px 24px", color: "#fcd34d" }}>
   <p style={{ fontSize: 40, marginBottom: 12 }}>🎂</p>
@@ -238,85 +314,127 @@ export default function Tienda() {
   </a>
 </footer>
 
-{/* Botón admin discreto */}
-<a href="/admin/login"
-  style={{ position: "fixed", bottom: 90, right: 24, backgroundColor: "rgba(124,63,47,0.3)", color: "white", width: 36, height: 36, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, zIndex: 40, textDecoration: "none", transition: "all 0.3s", backdropFilter: "blur(4px)" }}
-  onMouseEnter={e => (e.currentTarget.style.backgroundColor = C.marron)}
-  onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(124,63,47,0.3)")}>
-  ⚙️
-</a>
 
-      {/* Carrito */}
-      {carritoOpen && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 50, display: "flex" }}>
-          <div style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.6)" }} onClick={() => setCarritoOpen(false)} />
-          <div className="fade-in" style={{ width: "100%", maxWidth: 440, backgroundColor: "white", height: "100%", overflowY: "auto", display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 24px", background: `linear-gradient(135deg, ${C.marron}, ${C.marronClaro})` }}>
-              <h2 className="hero-text" style={{ color: "white", fontSize: 20, fontWeight: 700 }}>🛒 Tu pedido</h2>
-              <button onClick={() => setCarritoOpen(false)} style={{ background: "none", border: "none", color: "white", cursor: "pointer" }}><X size={24} /></button>
+
+{/* Carrito */}
+{carritoOpen && (
+  <div style={{ position: "fixed", inset: 0, zIndex: 50, display: "flex" }}>
+    <div style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.6)" }} onClick={() => setCarritoOpen(false)} />
+    <div className="fade-in" style={{ width: "100%", maxWidth: 440, backgroundColor: "white", height: "100%", overflowY: "auto", display: "flex", flexDirection: "column" }}>
+      
+      {/* Header carrito */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 24px", background: `linear-gradient(135deg, ${C.marron}, ${C.marronClaro})` }}>
+        <h2 className="hero-text" style={{ color: "white", fontSize: 20, fontWeight: 700 }}>🛒 Tu pedido</h2>
+        <button onClick={() => setCarritoOpen(false)} style={{ background: "none", border: "none", color: "white", cursor: "pointer" }}><X size={24} /></button>
+      </div>
+
+      {carrito.length === 0 ? (
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#9ca3af" }}>
+          <p style={{ fontSize: 64, marginBottom: 16 }}>🛒</p>
+          <p className="hero-text" style={{ fontSize: 18 }}>Tu carrito está vacío</p>
+          <p style={{ fontSize: 14, marginTop: 8, fontFamily: "Lato, sans-serif" }}>Agrega algo delicioso</p>
+          <button onClick={() => setCarritoOpen(false)}
+            style={{ marginTop: 24, backgroundColor: C.marron, color: "white", border: "none", padding: "12px 28px", borderRadius: 999, cursor: "pointer", fontSize: 14, fontFamily: "Georgia, serif", fontWeight: 700 }}>
+            Ver productos
+          </button>
+        </div>
+      ) : (
+        <>
+          <div style={{ flex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+            
+            {/* Pasos */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 8, marginBottom: 8 }}>
+              {["🛒 Productos", "📋 Datos", "✅ Confirmar"].map((paso, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                  <div style={{ fontSize: 11, padding: "4px 10px", borderRadius: 999, backgroundColor: i === 0 ? C.marron : i === 1 ? C.marronClaro : C.cremaOscura, color: i < 2 ? "white" : C.texto, fontWeight: 700 }}>
+                    {paso}
+                  </div>
+                  {i < 2 && <span style={{ color: C.marronClaro, fontSize: 12 }}>→</span>}
+                </div>
+              ))}
             </div>
 
-            {carrito.length === 0 ? (
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#9ca3af" }}>
-                <p style={{ fontSize: 64, marginBottom: 16 }}>🛒</p>
-                <p className="hero-text" style={{ fontSize: 18 }}>Tu carrito está vacío</p>
-                <p style={{ fontSize: 14, marginTop: 8, fontFamily: "Lato, sans-serif" }}>Agrega algo delicioso</p>
+            {/* Items */}
+            {carrito.map(item => (
+              <div key={item.producto.id} style={{ display: "flex", alignItems: "center", gap: 12, backgroundColor: C.crema, borderRadius: 16, padding: "12px 14px", border: `1px solid ${C.cremaOscura}` }}>
+                <span style={{ fontSize: 36 }}>🎂</span>
+                <div style={{ flex: 1 }}>
+                  <p style={{ color: C.texto, fontSize: 14, fontWeight: 700, marginBottom: 2 }}>{item.producto.nombre}</p>
+                  <p style={{ color: "#9ca3af", fontSize: 12, marginBottom: 4, fontFamily: "Lato, sans-serif" }}>${item.producto.precio.toLocaleString()} c/u</p>
+                  <p style={{ color: C.marron, fontSize: 15, fontWeight: 900 }}>${(item.producto.precio * item.cantidad).toLocaleString()}</p>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <button onClick={() => cambiarCantidad(item.producto.id, -1)} style={{ backgroundColor: C.cremaOscura, border: "none", borderRadius: "50%", width: 30, height: 30, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Minus size={14} /></button>
+                  <span style={{ fontSize: 16, fontWeight: 700, width: 20, textAlign: "center" }}>{item.cantidad}</span>
+                  <button onClick={() => cambiarCantidad(item.producto.id, 1)} style={{ backgroundColor: C.marron, border: "none", borderRadius: "50%", width: 30, height: 30, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "white" }}><Plus size={14} /></button>
+                </div>
+                <button onClick={() => eliminarDelCarrito(item.producto.id)} style={{ background: "none", border: "none", color: "#f87171", cursor: "pointer" }}><X size={16} /></button>
               </div>
-            ) : (
-              <>
-                <div style={{ flex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 12 }}>
-                  {carrito.map(item => (
-                    <div key={item.producto.id} style={{ display: "flex", alignItems: "center", gap: 12, backgroundColor: C.crema, borderRadius: 16, padding: "12px 14px", border: `1px solid ${C.cremaOscura}` }}>
-                      <span style={{ fontSize: 36 }}>🎂</span>
-                      <div style={{ flex: 1 }}>
-                        <p style={{ color: C.texto, fontSize: 14, fontWeight: 700, marginBottom: 2 }}>{item.producto.nombre}</p>
-                        <p style={{ color: C.marron, fontSize: 14, fontWeight: 900 }}>${(item.producto.precio * item.cantidad).toLocaleString()}</p>
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <button onClick={() => cambiarCantidad(item.producto.id, -1)} style={{ backgroundColor: C.cremaOscura, border: "none", borderRadius: "50%", width: 30, height: 30, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}><Minus size={14} /></button>
-                        <span style={{ fontSize: 16, fontWeight: 700, width: 20, textAlign: "center" }}>{item.cantidad}</span>
-                        <button onClick={() => cambiarCantidad(item.producto.id, 1)} style={{ backgroundColor: C.marron, border: "none", borderRadius: "50%", width: 30, height: 30, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "white" }}><Plus size={14} /></button>
-                      </div>
-                      <button onClick={() => eliminarDelCarrito(item.producto.id)} style={{ background: "none", border: "none", color: "#f87171", cursor: "pointer" }}><X size={16} /></button>
-                    </div>
-                  ))}
+            ))}
 
-                  <div style={{ borderTop: `2px solid ${C.cremaOscura}`, paddingTop: 16, marginTop: 8 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22, fontWeight: 900, marginBottom: 20 }}>
-                      <span className="hero-text" style={{ color: C.texto }}>Total</span>
-                      <span className="hero-text" style={{ color: C.marron }}>${total.toLocaleString()}</span>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                      <input placeholder="Tu nombre completo" value={nombre} onChange={e => setNombre(e.target.value)}
-                        style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif" }} />
-                      <input placeholder="Tu teléfono" value={telefono} onChange={e => setTelefono(e.target.value)}
-                        style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif" }} />
-                      <select value={metodoPago} onChange={e => setMetodoPago(e.target.value)}
-                        style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif" }}>
-                        <option value="efectivo">💵 Efectivo</option>
-                        <option value="transferencia">🏦 Transferencia</option>
-                        <option value="tarjeta">💳 Tarjeta</option>
-                      </select>
-                      <textarea placeholder="Notas: sabor, decoración, fecha de entrega..." value={notas} onChange={e => setNotas(e.target.value)} rows={3}
-                        style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif", resize: "none" }} />
-                    </div>
-                  </div>
-                </div>
+            {/* Resumen */}
+            <div style={{ backgroundColor: C.crema, borderRadius: 16, padding: 16, border: `1px solid ${C.cremaOscura}` }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, marginBottom: 8, color: C.texto, fontFamily: "Lato, sans-serif" }}>
+                <span>Subtotal ({totalItems} {totalItems === 1 ? "producto" : "productos"})</span>
+                <span>${total.toLocaleString()}</span>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, marginBottom: 12, color: C.texto, fontFamily: "Lato, sans-serif" }}>
+                <span>Envío</span>
+                <span style={{ color: "#10b981", fontWeight: 700 }}>A convenir</span>
+              </div>
+              <div style={{ borderTop: `2px solid ${C.cremaOscura}`, paddingTop: 12, display: "flex", justifyContent: "space-between" }}>
+                <span className="hero-text" style={{ color: C.texto, fontSize: 18, fontWeight: 700 }}>Total</span>
+                <span className="hero-text" style={{ color: C.marron, fontSize: 22, fontWeight: 900 }}>${total.toLocaleString()}</span>
+              </div>
+            </div>
 
-                <div style={{ padding: 16, borderTop: `1px solid ${C.cremaOscura}` }}>
-                  <button onClick={enviarPedido}
-                    style={{ width: "100%", backgroundColor: "#25D366", color: "white", border: "none", padding: "16px", borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontFamily: "Georgia, serif", boxShadow: "0 4px 16px rgba(37,211,102,0.4)" }}>
-                    <Send size={20} /> Enviar pedido por WhatsApp
-                  </button>
-                  <p style={{ textAlign: "center", fontSize: 12, color: "#9ca3af", marginTop: 10, fontFamily: "Lato, sans-serif" }}>
-                    Te contactaremos para confirmar tu pedido 🎂
-                  </p>
-                </div>
-              </>
-            )}
+            {/* Formulario */}
+            <div style={{ borderTop: `2px solid ${C.cremaOscura}`, paddingTop: 16 }}>
+              <p className="hero-text" style={{ color: C.marron, fontSize: 16, fontWeight: 700, marginBottom: 12 }}>📋 Tus datos</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <input placeholder="Tu nombre completo *" value={nombre} onChange={e => setNombre(e.target.value)}
+                  style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif" }} />
+                <input placeholder="Tu teléfono *" value={telefono} onChange={e => setTelefono(e.target.value)}
+                  style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif" }} />
+      <select value={metodoPago} onChange={e => setMetodoPago(e.target.value)}
+  style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif" }}>
+  <option value="efectivo">💵 Efectivo</option>
+  <option value="bold">💳 Pagar con Bold (tarjeta/transferencia)</option>
+  <option value="contraentrega">📦 Contra entrega</option>
+</select>
+
+{metodoPago === "bold" && (
+  <a href="https://checkout.bold.co/payment/LNK_EMZU6WEN6T" target="_blank"
+    style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "#6c3fc5", color: "white", padding: "12px 16px", borderRadius: 12, textDecoration: "none", fontSize: 14, fontWeight: 700, fontFamily: "Georgia, serif" }}>
+    💳 Ir a pagar con Bold →
+  </a>
+)}
+                <textarea placeholder="Notas: sabor, decoración, fecha de entrega, dirección..." value={notas} onChange={e => setNotas(e.target.value)} rows={3}
+                  style={{ border: `1px solid ${C.cremaOscura}`, borderRadius: 12, padding: "12px 16px", fontSize: 14, outline: "none", fontFamily: "Georgia, serif", resize: "none" }} />
+              </div>
+            </div>
           </div>
-        </div>
+
+          {/* Botón enviar */}
+          <div style={{ padding: 16, borderTop: `1px solid ${C.cremaOscura}`, backgroundColor: "white" }}>
+            {(!nombre || !telefono) && (
+              <p style={{ textAlign: "center", fontSize: 12, color: "#f87171", marginBottom: 8, fontFamily: "Lato, sans-serif" }}>
+                ⚠️ Por favor completa tu nombre y teléfono
+              </p>
+            )}
+            <button onClick={enviarPedido}
+              style={{ width: "100%", backgroundColor: nombre && telefono ? "#25D366" : "#9ca3af", color: "white", border: "none", padding: "16px", borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: nombre && telefono ? "pointer" : "not-allowed", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontFamily: "Georgia, serif", boxShadow: nombre && telefono ? "0 4px 16px rgba(37,211,102,0.4)" : "none", transition: "all 0.3s" }}>
+              <Send size={20} /> Enviar pedido por WhatsApp
+            </button>
+            <p style={{ textAlign: "center", fontSize: 12, color: "#9ca3af", marginTop: 10, fontFamily: "Lato, sans-serif" }}>
+              Te contactaremos para confirmar tu pedido 🎂
+            </p>
+          </div>
+        </>
       )}
+    </div>
+  </div>
+)}
 
       {pedidoEnviado && (
         <div className="fade-in" style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", backgroundColor: C.marron, color: "white", padding: "14px 28px", borderRadius: 999, boxShadow: "0 8px 24px rgba(0,0,0,0.2)", zIndex: 60, fontWeight: 700, fontSize: 15 }}>
